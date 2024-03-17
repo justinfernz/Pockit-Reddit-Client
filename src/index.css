@@ -5,38 +5,73 @@
   font-family: montserrat, sans-serif;
 }
 
+html {
+  background-color: #222;
+  font-size: 16px;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 header {
-  background-color: orangered;
-  box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
-  padding: 15px;
+  background-color: #222;
+  padding: 10px;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 header input {
   display: inline-block;
-  color: #fff;
-  font-size: 32px;
+  color: #222;
+  font-size: 1.5rem;
   font-weight: 600;
-  font-style: italic;
-  text-transform: uppercase;
-  background: none;
+  text-transform: lowercase;
+  background-color: #fff;
   outline: none;
   border: none;
   appearance: none;
+  padding: 5px;
+  text-align: center;
 }
 
 header:before {
-  content: "/r/";
+  content: url(./art-assets/pockit-logo.png);
   display: inline-block;
-  color: #fff;
-  font-size: 32px;
-  font-weight: 600;
-  font-style: italic;
-  text-transform: uppercase;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  margin: 2rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+button {
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+
+button:hover,
+button:focus {
+  background-color: #EF4A24;
 }
 
 .articles article {
   padding: 30px 15px;
   background-color: #fff;
+  width: 30vw;
 }
 
 .articles article a {
@@ -44,13 +79,55 @@ header:before {
 }
 
 .articles article h3 {
-  color: #212121;
+  color: #222;
 }
 
 .articles article:nth-child(2n) {
   background-color: #f3f3f3;
 }
 
-.articles article:hover {
-  background-color: orangered;
+.articles article:hover, article:focus {
+  background-color: #EF4A24;
+}
+
+iframe#webpack-dev-server-client-overlay {
+  display: none;
+}
+
+/*<500px S*/
+@media only screen and (max-width: 499px) {
+
+  header input {
+    width: 30vw;
+  }
+
+  .articles article {
+    width: 100vw;
+  }
+  
+}
+
+/*500-1200 M*/
+@media only screen and (min-width: 500px) and (max-width: 1199px) {
+
+  header input {
+    width: 20vw;
+  }
+
+  .articles article {
+    width: 100vw;
+  }
+  
+}
+/*>1200px L*/
+@media only screen and (min-width: 1200px) {
+
+  header input {
+    width: 10vw;
+  }
+
+  .articles article {
+    width: 50vw;
+  }
+  
 }

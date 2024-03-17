@@ -3,13 +3,14 @@ import Article from './components/Article';
 
 function App() {
   const [articles, setArticles] = useState([]);
-  const [subreddit, setSubreddit] = useState('webdev');
+  const [subreddit, setSubreddit] = useState('');
+  
   useEffect(() => {
-    if (subreddit != '') {
+    if (subreddit !== '') {
       const timeout = setTimeout(() => {
         fetch(`https://www.reddit.com/r/${subreddit}.json`)
           .then((res) => {
-            if (res.status != 200) {
+            if (res.status !== 200) {
               console.log("Error");
               return;
             }
@@ -19,7 +20,7 @@ function App() {
               }
             });
           });
-      }, 300);
+      }, 100);
       return () => clearTimeout(timeout);
     };
   });
@@ -28,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <input type="text" className="input" value={subreddit} onChange={e => setSubreddit(e.target.value)} />
+          <input type="text" placeholder="/r/" className="input" value={subreddit} onChange={e => setSubreddit(e.target.value)} />
       </header>
       <div className="articles">
         {
