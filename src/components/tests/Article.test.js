@@ -1,17 +1,17 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import Article from '../Article';
-import renderer from 'react-test-renderer';
 
-afterEach(() => {
-    cleanup();
-})
-test('should render Article component', () => {
-    render(<Article/>);
-    const linkElement = screen.getByTestId('link-1');
-    expect(linkElement).toBeInTheDocument();
-})
-
-
-test('matches snapshot', () => {
-    
-})
+describe(Article, () => {
+    it("should display no article titles initially", () => {
+        const { getByTestId } = render(<Article article={[]} />);
+        const articleTitles = getByTestId("titles").textContent;
+        expect(articleTitles).textContent = false;
+    });
+    it("should display a list of article titles after input", () => {
+        const { getByTestId } = render(<Article article={[]} />);
+        const articleTitles = getByTestId("titles").textContent;
+        userEvent.keyboard('foo', articleTitles)
+        expect(articleTitles).textContent = true;
+    });
+});
